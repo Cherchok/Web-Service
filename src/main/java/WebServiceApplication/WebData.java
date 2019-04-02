@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 public class WebData {
+    public List<String> fields;
 
     private static Document loadXMLString(String XMLresponse) throws Exception {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -113,10 +114,11 @@ public class WebData {
                 flag = true;
             }
         }
+        fields = fieldName;
         // output of result(map) in console
-        for (String key : nodes.keySet()) {
-            System.out.println(key + "=" + nodes.get(key));
-        }
+//        for (String key : nodes.keySet()) {
+//            System.out.println(key + "=" + nodes.get(key));
+//        }
         return nodes;
     }
 }
