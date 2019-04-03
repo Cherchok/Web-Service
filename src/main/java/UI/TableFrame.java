@@ -42,20 +42,15 @@ public class TableFrame extends JFrame {
         for (JLabel lable : lables) {
             String text = lable.getText();
             lable.setText(text);
-            lable.setMaximumSize(new Dimension(500, 30));
-            lable.setMinimumSize(new Dimension(300, 30));
         }
 
         // textFields create and setting
         textFieldList = new LinkedList<>();
         for (String fields : model.getFields()) {
             textFieldList.add(new JTextField());
-            ((LinkedList<JTextField>) textFieldList).getFirst().setMinimumSize(new Dimension(300, 30));
         }
-        JScrollPane scrollPane = new JScrollPane(table, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
-//        scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-//        scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+        JScrollPane scrollPane = new JScrollPane(table, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         this.add(scrollPane, BorderLayout.CENTER);
 
         JButton findAllButton = new JButton("find all");
@@ -65,12 +60,27 @@ public class TableFrame extends JFrame {
 
         buttons.add(findAllButton);
 
-        JPanel fieldsPanel = new JPanel();
-        fieldsPanel.setLayout(new BoxLayout(fieldsPanel, BoxLayout.LINE_AXIS));
+        JPanel controls = new JPanel();
+        controls.setLayout(new BoxLayout(controls, BoxLayout.PAGE_AXIS));
 
-        for (JLabel fieldLable : lables) {
-            fieldsPanel.add(fieldLable);
-        }
+//        JPanel fieldsPanel = new JPanel();
+//        fieldsPanel.setLayout(new BoxLayout(fieldsPanel, BoxLayout.LINE_AXIS));
+//
+//        for (JLabel fieldLable : lables) {
+//            fieldsPanel.add(fieldLable);
+//        }
+//
+//        fieldsPanel.setBorder(BorderFactory.createEmptyBorder(0, 12, 0, 10));
+//        controls.add(fieldsPanel);
+
+        controls.add(buttons);
+        controls.add(Box.createVerticalGlue());
+
+        this.add(controls, BorderLayout.EAST);
+
+
+
+
 
 
         this.setSize(900, 400);
